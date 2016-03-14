@@ -1,4 +1,4 @@
-Stand Alone Search Bat Written with Python and Qt4.
+Stand Alone Search Bar Written with Python and Qt4.
 
 multithreaded search of yahoo, bing, duck-duck-go, google, and youtube.
 
