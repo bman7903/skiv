@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+from sys import argv
+from google import gsearch
+from yahoo import ysearch
+from bing import bsearch
+from duck import dsearch
+import threading 
+
+global rslt
+rslt = []
+
+def Search( s, i, Query):
+  Query = str( Query )
+  t = str( str(s) + 'search(' + str(i) + ', "' + Query + '")' )
+  print( 'Searching ' + str(t) )
+  try:
+     z = eval(t)
+     for e in z:
+        global rslt
+        rslt.append( e )
+  except:
+     print( 'Problem with ' + str(t) )
+
+def All( Query ):
+  Query = str( Query )
+  A = 'd g y b'
+  for a in A.split(' '):
+     handle = threading.Thread( target=Search, args=( a, i, Query ) )
+     handle.start()
+
+i = 3
+Query = ''
+qL = ( len( argv ) )
+for a in range( 1, qL ):
+   Query = str( Query  + ' ' + str( argv[a] ) ).strip()
+All( Query )
+
+global rslt
+for e in rslt:
+   print(e)
